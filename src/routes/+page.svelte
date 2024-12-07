@@ -1,2 +1,4 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<h1>Furry Party Game</h1>
+<input type="text" id="name" placeholder="Enter your name"/>
+<input type="text" id="room" placeholder="Enter room code"/>
+<button id="join">Join</button>
