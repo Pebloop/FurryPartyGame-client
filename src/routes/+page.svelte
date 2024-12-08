@@ -20,14 +20,9 @@
 
             switch (data.type) {
                 case 'room_joined':
-                    if (data.success) {
-                        // remove join form
-                        document.getElementById('join-form').remove();
-
-                        // show room
-                    } else {
-                        console.log('Failed to join room');
-                    }
+                    document.getElementById('join-form').remove();
+                    break;
+                default:
                     break;
             }
         };
