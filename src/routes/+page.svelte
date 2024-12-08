@@ -19,7 +19,7 @@
             const data = JSON.parse(event.data);
 
             switch (data.type) {
-                case 'join':
+                case 'room_joined':
                     if (data.success) {
                         // remove join form
                         document.getElementById('join-form').remove();
