@@ -15,25 +15,27 @@
 
         socket.onmessage = function (event) {
             console.log('Message from server ', event.data);
+
+            const data = JSON.parse(event.data);
+
+            switch (data.type) {
+                case 'join':
+                    if (data.success) {
+                        // remove join form
+                        document.getElementById('join-form').remove();
+
+                        // show room
+                    } else {
+                        console.log('Failed to join room');
+                    }
+                    break;
+            }
         };
 
         socket.onclose = function (event) {
             console.log('Disconnected from server');
         };
 
-        socket.addEventListener('error', function (event) {
-            console.log('Error: ', event);
-        });
-
-        socket.addEventListener('room_joined', function (event) {
-            console.log('Room joined: ', event);
-
-            // delete join form
-            document.getElementById('join-form').remove();
-
-            // show game
-
-        });
     });
 
     function join() {
