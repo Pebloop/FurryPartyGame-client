@@ -2,7 +2,11 @@
     let name = '';
     let room = '';
 
-    let socket = new WebSocket('ws://146.59.153.243:8001');
+    let socket = null;
+
+    if (document) {
+        socket = new WebSocket('ws://146.59.153.243:8001');
+    }
 
     function join() {
         if (name && room) {
