@@ -1,12 +1,14 @@
 <script lang="ts">
+    import {onMount} from "svelte";
+
     let name = '';
     let room = '';
 
     let socket = null;
 
-    if (document) {
+    onMount(() => {
         socket = new WebSocket('ws://146.59.153.243:8001');
-    }
+    });
 
     function join() {
         if (name && room) {
