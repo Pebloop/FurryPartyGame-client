@@ -7,7 +7,7 @@
     let socket = null;
 
     onMount(() => {
-        socket = new WebSocket('ws://146.59.153.243:8001');
+        socket = new WebSocket('wss://ws-fpg.pebloop.dev');
     });
 
     function join() {
