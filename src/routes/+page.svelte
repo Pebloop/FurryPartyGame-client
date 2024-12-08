@@ -24,6 +24,10 @@
         socket.addEventListener('error', function (event) {
             console.log('Error: ', event);
         });
+
+        socket.addEventListener('room_joined', function (event) {
+            console.log('Room joined: ', event);
+        });
     });
 
     function join() {
