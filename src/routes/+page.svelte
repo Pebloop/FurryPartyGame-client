@@ -1,12 +1,21 @@
 <script lang="ts">
     import {onMount} from "svelte";
+    import GameScreen from "$lib/games/GameScreen.svelte";
 
     let name = '';
     let room = '';
 
+    let gameName = "";
+
     let socket = null;
 
     onMount(() => {
+        let popup = document.getElementById('popup');
+        popup.style.display = 'none';
+
+        let game = document.getElementById('game');
+        game.style.display = 'none';
+
         socket = new WebSocket('wss://ws-fpg.pebloop.dev');
 
         socket.onopen = function (event) {
@@ -21,8 +30,11 @@
             switch (data.type) {
                 case 'room_joined':
                     document.getElementById('join-form').remove();
+                    game.style.display = 'flex';
+                    gameName = data.game;
                     break;
                 default:
+                    popup.style.display = 'flex';
                     break;
             }
         };
@@ -53,4 +65,19 @@
             <button id="join" on:click={join} class="bg-blue-500 text-white rounded-2xl h-8 w-1/3 mt-3">Join</button>
         </div>
     </div>
+</div>
+
+<div id="popup" class="hidden">
+    <div class="flex flex-col items-center justify-center h-screen absolute top-0 left-0 w-full h-full bg-black bg-opacity-50">
+        <div class="flex flex-col w-80 bg-gray-500 rounded-2xl items-center">
+            <div class="flex flex-col p-4 w-full items-center">
+                <h1 class="text-white text-xl">Room could not be joined.</h1>
+                <button id="close" on:click={() => document.getElementById('popup').style.display = 'none'} class="bg-blue-500 text-white rounded-2xl h-8 w-1/3 mt-3">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="game">
+    <GameScreen game={gameName}/>
 </div>
