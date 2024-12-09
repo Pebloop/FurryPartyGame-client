@@ -4,6 +4,8 @@
     export let code: String;
     export let socket: WebSocket;
 
+    let isCrouching = false;
+
     function jump() {
         console.log('Jumping');
         socket.send(JSON.stringify({
@@ -13,8 +15,18 @@
         }));
     }
 
+    function crouch() {
+        console.log('Crouching');
+        if (isCrouching) {
+            StartCrouching();
+        } else {
+            StopCrouching();
+        }
+    }
+
     function StartCrouching() {
         console.log('Crouching');
+
         socket.send(JSON.stringify({
             type: "runrunrun_start_crouching",
             player: player,
@@ -38,5 +50,5 @@
     <h1>Player: {player}</h1>
     <h1>Code: {code}</h1>
     <button id="jump" on:click={jump}>Jump</button>
-    <button id="crouch" on:mousedown={StartCrouching} on:mouseup={StopCrouching}>Crouch</button>
+    <button id="crouch" on:click={crouch}>Crouch</button>
 </div>
