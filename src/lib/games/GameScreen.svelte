@@ -10,7 +10,7 @@
 </script>
 
 {#if game === 'RunRunRun'}
-    <RunRunRunGame />
+    <RunRunRunGame {player} {code} {socket} />
 {:else}
     <h1>Game not found</h1>
 {/if}
