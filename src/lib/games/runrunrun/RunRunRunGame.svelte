@@ -17,10 +17,12 @@
 
     function crouch() {
         console.log('Crouching');
-        if (isCrouching) {
+        if (!isCrouching) {
             StartCrouching();
+            isCrouching = true;
         } else {
             StopCrouching();
+            isCrouching = false;
         }
     }
 
