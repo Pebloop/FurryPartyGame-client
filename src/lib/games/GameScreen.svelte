@@ -3,6 +3,9 @@
     import RunRunRunGame from "$lib/games/runrunrun/RunRunRunGame.svelte";
 
     export let game: String;
+    export let player: String;
+    export let code: String;
+    export let socket: WebSocket;
 
 </script>
 

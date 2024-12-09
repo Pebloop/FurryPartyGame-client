@@ -79,5 +79,5 @@
 </div>
 
 <div id="game">
-    <GameScreen game={gameName}/>
+    <GameScreen game={gameName} socket={socket} player={name} code={room}/>
 </div>
