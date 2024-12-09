@@ -49,6 +49,6 @@
     <h1>Run Run Run</h1>
     <h1>Player: {player}</h1>
     <h1>Code: {code}</h1>
-    <button id="jump" on:click={jump}>Jump</button>
-    <button id="crouch" on:click={crouch}>Crouch</button>
+    <button id="jump" on:click={jump} class="w-2/3 h-10" >Jump</button>
+    <button id="crouch" on:click={crouch} class="w-2/3 h-10">Crouch</button>
 </div>
