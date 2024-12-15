@@ -24,9 +24,6 @@
 
         socket.onclose = function (event) {
             console.log('Disconnected from server');
-            document.getElementById('join-form').style.display = 'flex';
-            game.style.display = 'none';
-            gameName = "";
         };
 
         socket.onmessage = function (event) {
@@ -40,6 +37,10 @@
                     game.style.display = 'flex';
                     gameName = data.game;
                     break;
+                case 'game_closed':
+                    document.getElementById('join-form').style.display = 'flex';
+                    game.style.display = 'none';
+                    gameName = "";
                 default:
                     popup.style.display = 'flex';
                     break;
