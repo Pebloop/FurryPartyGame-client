@@ -1,6 +1,5 @@
 <script lang="ts">
     import {onMount} from "svelte";
-    import GameScreen from "$lib/games/GameScreen.svelte";
 
     let name = '';
     let room = '';
@@ -22,6 +21,13 @@
             console.log('Connected to server');
         };
 
+        socket.onclose = function (event) {
+            console.log('Disconnected from server');
+            document.getElementById('join-form').style.display = 'flex';
+            game.style.display = 'none';
+            gameName = "";
+        };
+
         socket.onmessage = function (event) {
             console.log('Message from server ', event.data);
 
@@ -29,7 +35,7 @@
 
             switch (data.type) {
                 case 'room_joined':
-                    document.getElementById('join-form').remove();
+                    document.getElementById('join-form').style.display = 'none';
                     game.style.display = 'flex';
                     gameName = data.game;
                     break;
