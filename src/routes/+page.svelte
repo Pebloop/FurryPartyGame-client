@@ -1,5 +1,6 @@
 <script lang="ts">
     import {onMount} from "svelte";
+    import GameScreen from "$lib/games/GameScreen.svelte";
 
     let name = '';
     let room = '';
