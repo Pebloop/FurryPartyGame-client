@@ -23,6 +23,7 @@
     function jump() {
         console.log('Jumping');
         socket.send(JSON.stringify({
+            time: Date.now(),
             type: "runrunrun_jump",
             player: player,
             code: code
@@ -44,6 +45,7 @@
         console.log('Crouching');
 
         socket.send(JSON.stringify({
+            time: Date.now(),
             type: "runrunrun_start_crouching",
             player: player,
             code: code
@@ -53,6 +55,7 @@
     function StopCrouching() {
         console.log('Stop Crouching');
         socket.send(JSON.stringify({
+            time: Date.now(),
             type: "runrunrun_stop_crouching",
             player: player,
             code: code
