@@ -16,7 +16,7 @@
         let game = document.getElementById('game');
         game.style.display = 'none';
 
-        socket = new WebSocket('wss://ws-fpg.pebloop.dev');
+        socket = new WebSocket('wss://fpgs.pebloop.dev');
 
         socket.onopen = function (event) {
             console.log('Connected to server');
